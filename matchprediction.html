@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cricket Match Prediction Form</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+        }
+
+        body {
+            line-height: 1.6;
+            background: #f5f5f7;
+            color: #333;
+            padding: 20px;
+        }
+
+        .navbar {
+            background: #002244;
+            color: #fff;
+            padding: 1rem;
+        }
+
+        .navbar-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: auto;
+        }
+
+        .navbar-brand {
+            font-size: 1.5rem;
+            color: #fff;
+            text-decoration: none;
+        }
+
+        .navbar-menu {
+            display: flex;
+            list-style: none;
+        }
+
+        .navbar-item {
+            margin-left: 1rem;
+        }
+
+        .navbar-link {
+            color: #fff;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            transition: background 0.3s;
+        }
+
+        .navbar-link:hover {
+            background: #0056b3;
+            border-radius: 5px;
+        }
+
+        .navbar-toggle {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
+
+        .bar {
+            height: 3px;
+            width: 25px;
+            background: #fff;
+            margin: 4px 0;
+        }
+
+        .form-container {
+            max-width: 600px;
+            margin: 2rem auto;
+            background: #fff;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-container h1 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        .form-group {
+            margin-bottom: 1rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .form-group select,
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.5rem;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .form-group textarea {
+            resize: vertical;
+        }
+
+        .form-group button {
+            padding: 0.7rem 1.4rem;
+            background: #28a745;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .form-group button:hover {
+            background: #218838;
+        }
+
+        footer {
+            background: #002244;
+            color: #fff;
+            text-align: center;
+            padding: 1rem 0;
+            margin-top: 2rem;
+        }
+
+        @media (max-width: 768px) {
+            .navbar-menu {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+            }
+
+            .navbar-menu.active {
+                display: flex;
+            }
+
+            .navbar-toggle {
+                display: flex;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="navbar-container">
+            <a href="#" class="navbar-brand">Cricket Predictor</a>
+            <div class="navbar-toggle" id="mobile-menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+            <ul class="navbar-menu">
+                <li class="navbar-item"><a href="#home" class="navbar-link">Home</a></li>
+                <li class="navbar-item"><a href="#teams" class="navbar-link">Teams</a></li>
+                <li class="navbar-item"><a href="#schedule" class="navbar-link">Schedule</a></li>
+                <li class="navbar-item"><a href="#about" class="navbar-link">About</a></li>
+                <li class="navbar-item"><a href="#contact" class="navbar-link">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="form-container">
+        <h1>Cricket Match Prediction</h1>
+        <form id="prediction-form">
+            <div class="form-group">
+                <label for="team1">Team 1</label>
+                <select id="team1" name="team1" onchange="updateTeam2Options()">
+                    <option value="">Select Team 1</option>
+                    <option value="India">India</option>
+                    <option value="Australia">Australia</option>
+                    <option value="England">England</option>
+                    <option value="South Africa">South Africa</option>
+                    <!-- Add other teams here -->
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="team1-players">Select Players from Team 1</label>
+                <select id="team1-players" name="team1-players" multiple>
+                    <!-- Options will be populated based on selected team 1 -->
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="team2">Team 2</label>
+                <select id="team2" name="team2" onchange="updateTeam2Players()">
+                    <option value="">Select Team 2</option>
+                    <!-- Options will be populated based on selected team 1 -->
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="team2-players">Select Players from Team 2</label>
+                <select id="team2-players" name="team2-players" multiple>
+                    <!-- Options will be populated based on selected team 2 -->
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="stadium">Match Stadium</label>
+                <select id="stadium" name="stadium">
+                    <option value="">Select Stadium</option>
+                    <option value="Melbourne Cricket Ground">Melbourne Cricket Ground</option>
+                    <option value="Eden Gardens">Eden Gardens</option>
+                    <option value="Lords">Lords</option>
+                    <option value="Wankhede Stadium">Wankhede Stadium</option>
+                    <!-- Add other stadiums here -->
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="fans-rating">Fans Rating</label>
+                <input type="number" id="fans-rating" name="fans-rating" placeholder="Enter fans rating (1-10)" min="1" max="10">
+            </div>
+            <div class="form-group">
+                <label for="prediction">Your Prediction</label>
+                <textarea id="prediction" name="prediction" placeholder="Who do you think will win and what will be the target score?"></textarea>
+            </div>
+            <div class="form-group">
+                <button type="submit">Submit Prediction</button>
+            </div>
+        </form>
+    </div>
+
+    <footer id="footer">
+        <div class="footer-container">
+            <p>&copy; 2024 Cricket World Cup Predictor. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        const teams = {
+            India: ["Virat Kohli", "Rohit Sharma", "Jasprit Bumrah", "Hardik Pandya", "Rishabh Pant"],
+            Australia: ["Steve Smith", "David Warner", "Pat Cummins", "Glenn Maxwell", "Aaron Finch"],
+            England: ["Joe Root", "Ben Stokes", "Jos Buttler", "Eoin Morgan", "Jofra Archer"],
+            SouthAfrica: ["Quinton de Kock", "Kagiso Rabada", "Faf du Plessis", "David Miller", "Anrich Nortje"]
+            // Add other teams and their players here
+        };
+
+        function updateTeam2Options() {
+            const team1 = document.getElementById("team1").value;
+            const team2 = document.getElementById("team2");
+
+            // Clear existing options
+            team2.innerHTML = '<option value="">Select Team 2</option>';
+
+            // Add new options excluding the selected team1
+            for (const team in teams) {
+                if (team !== team1) {
+                    const option = document.createElement("option");
+                    option.value = team;
+                    option.textContent = team;
+                    team2.appendChild(option);
+                }
+            }
+
+            // Update players list for team1
+            updateTeamPlayers("team1", team1);
+        }
+
+        function updateTeam2Players() {
+            const team2 = document.getElementById("team2").value;
+            updateTeamPlayers("team2", team2);
+        }
+
+        function updateTeamPlayers(teamSelectId, team) {
+            const playerSelect = document.getElementById(`${teamSelectId}-players`);
+            playerSelect.innerHTML = ''; // Clear existing options
+
+            if (team) {
+                teams[team].forEach(player => {
+                    const option = document.createElement("option");
+                    option.value = player;
+                    option.textContent = player;
+                    playerSelect.appendChild(option);
+                });
+            }
+        }
+
+        const mobileMenu = document.querySelector('#mobile-menu');
+        const navbarMenu = document.querySelector('.navbar-menu');
+
+        mobileMenu.addEventListener('click', () => {
+            navbarMenu.classList.toggle('active');
+        });
+
+        document.getElementById('prediction-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+            // Here you can handle the form submission, e.g., send the data to the server
+            alert('Prediction submitted!');
+        });
+    </script>
+</body>
+</html>

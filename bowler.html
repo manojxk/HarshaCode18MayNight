@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cricket World Cup Predictor - Highest Run Scorer</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+        }
+
+        body {
+            line-height: 1.6;
+            background: #f5f5f7;
+            color: #333;
+        }
+
+        .navbar {
+            background: #002244;
+            color: #fff;
+            padding: 1rem;
+        }
+
+        .navbar-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: auto;
+        }
+
+        .navbar-brand {
+            font-size: 1.5rem;
+            color: #fff;
+            text-decoration: none;
+        }
+
+        .navbar-menu {
+            display: flex;
+            list-style: none;
+        }
+
+        .navbar-item {
+            margin-left: 1rem;
+        }
+
+        .navbar-link {
+            color: #fff;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            transition: background 0.3s;
+        }
+
+        .navbar-link:hover {
+            background: #0056b3;
+            border-radius: 5px;
+        }
+
+        .navbar-toggle {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
+
+        .bar {
+            height: 3px;
+            width: 25px;
+            background: #fff;
+            margin: 4px 0;
+        }
+
+        .run-scorer-container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            text-align: center;
+        }
+
+        .run-scorer-container h1 {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            color: #333;
+        }
+
+        .scorer-card {
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin: 1rem auto;
+            padding: 2rem;
+            width: 300px;
+            text-align: center;
+        }
+
+        .scorer-photo {
+            border-radius: 50%;
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+            margin-bottom: 1rem;
+        }
+
+        .scorer-card h2 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: #333;
+        }
+
+        .scorer-card p {
+            font-size: 1rem;
+            color: #666;
+            line-height: 1.4;
+        }
+
+        footer {
+            background: #002244;
+            color: #fff;
+            text-align: center;
+            padding: 1rem 0;
+            margin-top: 2rem;
+        }
+
+        @media (max-width: 768px) {
+            .navbar-menu {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+            }
+
+            .navbar-menu.active {
+                display: flex;
+            }
+
+            .navbar-toggle {
+                display: flex;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="navbar-container">
+            <a href="#" class="navbar-brand">Cricket Predictor</a>
+            <div class="navbar-toggle" id="mobile-menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+            <ul class="navbar-menu">
+                <li class="navbar-item"><a href="#home" class="navbar-link">Home</a></li>
+                <li class="navbar-item"><a href="#teams" class="navbar-link">Teams</a></li>
+                <li class="navbar-item"><a href="#schedule" class="navbar-link">Schedule</a></li>
+                <li class="navbar-item"><a href="#about" class="navbar-link">About</a></li>
+                <li class="navbar-item"><a href="#contact" class="navbar-link">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section id="highest-run-scorer">
+        <div class="run-scorer-container">
+            <h1>Predicted Top Wicket Takers</h1>
+            <div class="scorer-card">
+                <img src="scorer.jpg" alt="Player Photo" class="scorer-photo">
+                <h2>Fazalhaq Farooqi</h2>
+                <p>Predicted Wickets: 18</p>
+                <p>Team: AFG</p>
+            </div>
+        </div>
+    </section>
+
+    <footer id="footer">
+        <div class="footer-container">
+            <p>&copy; 2024 Cricket World Cup Predictor. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        const mobileMenu = document.querySelector('#mobile-menu');
+        const navbarMenu = document.querySelector('.navbar-menu');
+
+        mobileMenu.addEventListener('click', () => {
+            navbarMenu.classList.toggle('active');
+        });
+    </script>
+</body>
+</html>

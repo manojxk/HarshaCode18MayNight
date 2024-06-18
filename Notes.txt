@@ -1,0 +1,3 @@
+1.Nice page to show all the teams participating
+2. Nice page to show team members with Bio and photo
+3. Make nice page to show winning team with colors 

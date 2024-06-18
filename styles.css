@@ -1,0 +1,151 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    line-height: 1.6;
+}
+
+.navbar {
+    background: #002244;
+    color: #fff;
+    padding: 1rem;
+}
+
+.navbar-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: auto;
+}
+
+.navbar-brand {
+    font-size: 1.5rem;
+    color: #fff;
+    text-decoration: none;
+}
+
+.navbar-menu {
+    display: flex;
+    list-style: none;
+}
+
+.navbar-item {
+    margin-left: 1rem;
+}
+
+.navbar-link {
+    color: #fff;
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    transition: background 0.3s;
+}
+
+.navbar-link:hover {
+    background: #0056b3;
+    border-radius: 5px;
+}
+
+.navbar-toggle {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+}
+
+.bar {
+    height: 3px;
+    width: 25px;
+    background: #fff;
+    margin: 4px 0;
+}
+
+.header-container {
+    background: url('cricket-bg.jpg') no-repeat center center/cover;
+    height: 100vh;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 0 20px;
+    background-color: rgba(0, 36, 68, 0.8);
+    background-blend-mode: overlay;
+}
+
+.header-container h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+.header-container p {
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.btn {
+    padding: 0.7rem 1.4rem;
+    background: #e31837;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.btn:hover {
+    background: #bf162d;
+}
+
+.section-container {
+    padding: 2rem;
+    max-width: 800px;
+    margin: auto;
+    text-align: center;
+}
+
+.prediction-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.prediction-form label {
+    margin-bottom: 0.5rem;
+    font-size: 1.2rem;
+}
+
+.prediction-form select, .prediction-form button {
+    padding: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 1rem;
+}
+
+
+footer {
+    background: #002244;
+    color: #fff;
+    text-align: center;
+    padding: 1rem 0;
+    margin-top: 2rem;
+}
+
+@media (max-width: 768px) {
+    .navbar-menu {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .navbar-menu.active {
+        display: flex;
+    }
+
+    .navbar-toggle {
+        display: flex;
+    }
+}

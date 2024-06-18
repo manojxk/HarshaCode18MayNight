@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cricket World Cup Predictor - Predictions</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+        }
+
+        body {
+            line-height: 1.6;
+            background: #f5f5f7;
+            color: #333;
+        }
+
+        .navbar {
+            background: #002244;
+            color: #fff;
+            padding: 1rem;
+        }
+
+        .navbar-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: auto;
+        }
+
+        .navbar-brand {
+            font-size: 1.5rem;
+            color: #fff;
+            text-decoration: none;
+        }
+
+        .navbar-menu {
+            display: flex;
+            list-style: none;
+        }
+
+        .navbar-item {
+            margin-left: 1rem;
+        }
+
+        .navbar-link {
+            color: #fff;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            transition: background 0.3s;
+        }
+
+        .navbar-link:hover {
+            background: #0056b3;
+            border-radius: 5px;
+        }
+
+        .navbar-toggle {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
+
+        .bar {
+            height: 3px;
+            width: 25px;
+            background: #fff;
+            margin: 4px 0;
+        }
+
+        .prediction-container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            text-align: center;
+        }
+
+        .prediction-container h1 {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            color: #333;
+        }
+
+        .bracket {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+        }
+
+        .match {
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin: 1rem;
+            padding: 1rem;
+            width: 200px;
+            text-align: center;
+        }
+
+        .match h3 {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            color: #333;
+        }
+
+        .match button {
+            padding: 0.5rem 1rem;
+            background: #e31837;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .match button:hover {
+            background: #bf162d;
+        }
+
+        .semi-final, .final {
+            margin-top: 2rem;
+        }
+
+        .semi-final h2, .final h2 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: #333;
+        }
+
+        .winner {
+            background: #28a745;
+            color: #fff;
+            padding: 1rem;
+            border-radius: 10px;
+            margin-top: 2rem;
+        }
+
+        footer {
+            background: #002244;
+            color: #fff;
+            text-align: center;
+            padding: 1rem 0;
+            margin-top: 2rem;
+        }
+
+        @media (max-width: 768px) {
+            .navbar-menu {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+            }
+
+            .navbar-menu.active {
+                display: flex;
+            }
+
+            .navbar-toggle {
+                display: flex;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="navbar-container">
+            <a href="#" class="navbar-brand">Cricket Predictor</a>
+            <div class="navbar-toggle" id="mobile-menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+            <ul class="navbar-menu">
+                <li class="navbar-item"><a href="#home" class="navbar-link">Home</a></li>
+                <li class="navbar-item"><a href="#teams" class="navbar-link">Teams</a></li>
+                <li class="navbar-item"><a href="#schedule" class="navbar-link">Schedule</a></li>
+                <li class="navbar-item"><a href="#about" class="navbar-link">About</a></li>
+                <li class="navbar-item"><a href="#contact" class="navbar-link">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section id="predictions">
+        <div class="prediction-container">
+            <h1>Match Predictions</h1>
+            <div class="bracket" id="quarter-finals">
+                <div class="match">
+                    <h3>Match 1</h3>
+                    <button onclick="predict('Afghanistan', 'Australia', 'q1')">Predict</button>
+                    <p id="q1-result"></p>
+                </div>
+                <div class="match">
+                    <h3>Match 2</h3>
+                    <button onclick="predict('Bangladesh', 'Canada', 'q2')">Predict</button>
+                    <p id="q2-result"></p>
+                </div>
+                <div class="match">
+                    <h3>Match 3</h3>
+                    <button onclick="predict('England', 'India', 'q3')">Predict</button>
+                    <p id="q3-result"></p>
+                </div>
+                <div class="match">
+                    <h3>Match 4</h3>
+                    <button onclick="predict('Ireland', 'Namibia', 'q4')">Predict</button>
+                    <p id="q4-result"></p>
+                </div>
+                <div class="match">
+                    <h3>Match 5</h3>
+                    <button onclick="predict('Nepal', 'Netherlands', 'q5')">Predict</button>
+                    <p id="q5-result"></p>
+                </div>
+                <div class="match">
+                    <h3>Match 6</h3>
+                    <button onclick="predict('New Zealand', 'Oman', 'q6')">Predict</button>
+                    <p id="q6-result"></p>
+                </div>
+                <div class="match">
+                    <h3>Match 7</h3>
+                    <button onclick="predict('Pakistan', 'Papua New Guinea', 'q7')">Predict</button>
+                    <p id="q7-result"></p>
+                </div>
+                <div class="match">
+                    <h3>Match 8</h3>
+                    <button onclick="predict('Scotland', 'South Africa', 'q8')">Predict</button>
+                    <p id="q8-result"></p>
+                </div>
+            </div>
+
+            <div class="semi-final">
+                <h2>Semi-Finals</h2>
+                <div class="bracket" id="semi-finals">
+                    <div class="match">
+                        <h3>AUS vs IND</h3>
+                        <p id="s1"></p>
+                    </div>
+                    <div class="match">
+                        <h3>SA vs WI</h3>
+                        <p id="s2"></p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="final">
+                <h2>Final</h2>
+                <div class="bracket" id="final">
+                    <div class="match">
+                        <h3>IND vs SA</h3>
+                        <p id="f"></p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="winner" id="winner">
+                <h2 id="winner-name"></h2>
+            </div>
+        </div>
+    </section>
+
+    <footer id="footer">
+        <div class="footer-container">
+            <p>&copy; 2024 Cricket World Cup Predictor. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        const quarterFinals = {
+            q1: null,
+            q2: null,
+            q3: null,
+            q4: null,
+            q5: null,
+            q6: null,
+            q7: null,
+            q8: null
+        };
+
+        const semiFinals = {
+            s1: null,
+            s2: null
+        };
+
+        function predict(team1, team2, matchId) {
+            // Simulate a prediction based on hardcoded logic for now
+            const winner = Math.random() > 0.5 ? team1 : team2;
+            document.getElementById(`${matchId}-result`).innerText = `Winner: ${winner}`;
+            quarterFinals[matchId] = winner;
+            checkSemiFinals();
+        }
+
+        function checkSemiFinals() {
+            // Check if all quarter-finals are done
+            if (Object.values(quarterFinals).every(result => result)) {
+                // Simulate semi-final matches
+                semiFinals.s1 = quarterFinals.q1;
+                semiFinals.s2 = quarterFinals.q2;
+                document.getElementById('s1').innerText = `${semiFinals.s1} vs ${semiFinals.s2}`;
+
+                semiFinals.s1 = quarterFinals.q3;
+                semiFinals.s2 = quarterFinals.q4;
+                document.getElementById('s2').innerText = `${semiFinals.s1} vs ${semiFinals.s2}`;
+
+                checkFinals();
+            }
+        }
+
+        function checkFinals() {
+            // Check if both semi-finals are done
+            if (semiFinals.s1 && semiFinals.s2) {
+                // Simulate final match
+                const finalWinner = Math.random() > 0.5 ? semiFinals.s1 : semiFinals.s2;
+                document.getElementById('f').innerText = `Winner: ${finalWinner}`;
+                document.getElementById('winner-name').innerText = `Champion: ${finalWinner}`;
+            }
+        }
+    </script>
+</body>
+</html>

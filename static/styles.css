@@ -65,16 +65,17 @@ body {
 
 .header-container {
     background: url('cricket-bg.jpg') no-repeat center center/cover;
-    height: 100vh;
-    color: #fff;
+    height: 82vh;
+    color: #002244;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     text-align: center;
     padding: 0 20px;
-    background-color: rgba(0, 36, 68, 0.8);
+    background-color: #fff;
     background-blend-mode: overlay;
+    
 }
 
 .header-container h1 {
@@ -89,16 +90,25 @@ body {
 
 .btn {
     padding: 0.7rem 1.4rem;
-    background: #e31837;
+    background: #002244;
     color: #fff;
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    transition: background 0.3s;
+    transition: transform 0.3s ease;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+.btn-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
 }
 
 .btn:hover {
-    background: #bf162d;
+    transform: scale(1.2);
 }
 
 .section-container {
@@ -131,7 +141,6 @@ footer {
     color: #fff;
     text-align: center;
     padding: 1rem 0;
-    margin-top: 2rem;
 }
 
 @media (max-width: 768px) {

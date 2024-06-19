@@ -1,0 +1,28 @@
+<!--<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cricket World Cup Winner Prediction</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>-->
+{% extends 'base.html' %}
+
+{% block title %}Cricket World Cup Winner Prediction{% endblock %}
+<body>
+    {% block content %}
+    <header id="home">
+        <div class="header-container">
+            <h1>Welcome to Cricket World Cup Predictor</h1>
+            <p>Predict the winner of the Cricket World Cup 2024</p>
+            <div class="btn-container">
+                <a href="{{ url_for('matchpredict') }}" class="btn">Get Started</a>
+                <a href="{{ url_for('batsman') }}" class="btn">Best Batsman</a>
+                <a href="{{ url_for('bowler') }}" class="btn">Best Bowler</a>
+            </div>
+        </div>
+    </header>
+    {% endblock %}
+</body>
+</html>

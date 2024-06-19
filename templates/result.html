@@ -1,0 +1,18 @@
+<!--<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Answer Page!</title>-->
+    {% extends 'base.html' %}
+    {% block title %}Answer Page!{% endblock %}
+<body>
+    {% block content %}
+    <h1>T20 Winning Team!</h1>
+    <hr>
+    <h4 style="color: aqua;font-family: Arial, Helvetica, sans-serif; font-weight: bold;">{{team}}</h4>
+    <br><br>
+    <form action="/home" method="get">
+            <button class="btn" type="submit">Go back</button>
+    </form>
+    {% endblock %}
+</body>

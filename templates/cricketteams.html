@@ -1,77 +1,13 @@
-<!DOCTYPE html>
+<!--<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cricket World Cup Predictor - Teams</title>
+    <title>Cricket World Cup Predictor - Teams</title>-->
+    {% extends 'base.html' %}
+    {% block title %}Cricket World Cup Predictor - Team{% endblock %}
+    {% block styles %}
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-        }
-
-        body {
-            line-height: 1.6;
-            background: #f5f5f7;
-            color: #333;
-        }
-
-        .navbar {
-            background: #002244;
-            color: #fff;
-            padding: 1rem;
-        }
-
-        .navbar-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            max-width: 1200px;
-            margin: auto;
-        }
-
-        .navbar-brand {
-            font-size: 1.5rem;
-            color: #fff;
-            text-decoration: none;
-        }
-
-        .navbar-menu {
-            display: flex;
-            list-style: none;
-        }
-
-        .navbar-item {
-            margin-left: 1rem;
-        }
-
-        .navbar-link {
-            color: #fff;
-            text-decoration: none;
-            padding: 0.5rem 1rem;
-            transition: background 0.3s;
-        }
-
-        .navbar-link:hover {
-            background: #0056b3;
-            border-radius: 5px;
-        }
-
-        .navbar-toggle {
-            display: none;
-            flex-direction: column;
-            cursor: pointer;
-        }
-
-        .bar {
-            height: 3px;
-            width: 25px;
-            background: #fff;
-            margin: 4px 0;
-        }
-
         .team-container {
             max-width: 1200px;
             margin: 2rem auto;
@@ -151,26 +87,9 @@
             }
         }
     </style>
-</head>
+     {% endblock %}
 <body>
-    <nav class="navbar">
-        <div class="navbar-container">
-            <a href="#" class="navbar-brand">Cricket Predictor</a>
-            <div class="navbar-toggle" id="mobile-menu">
-                <span class="bar"></span>
-                <span class="bar"></span>
-                <span class="bar"></span>
-            </div>
-            <ul class="navbar-menu">
-                <li class="navbar-item"><a href="#home" class="navbar-link">Home</a></li>
-                <li class="navbar-item"><a href="#teams" class="navbar-link">Teams</a></li>
-                <li class="navbar-item"><a href="#schedule" class="navbar-link">Schedule</a></li>
-                <li class="navbar-item"><a href="#about" class="navbar-link">About</a></li>
-                <li class="navbar-item"><a href="#contact" class="navbar-link">Contact</a></li>
-            </ul>
-        </div>
-    </nav>
-
+    {% block content %}
     <section id="team">
         <div class="team-container">
             <h1>Participating Teams</h1>
@@ -280,20 +199,15 @@
             </div>
         </div>
     </section>
+    {% endblock %}
 
-    <footer id="footer">
-        <div class="footer-container">
-            <p>&copy; 2024 Cricket World Cup Predictor. All rights reserved.</p>
-        </div>
-    </footer>
-
-    <script>
+    <!--<script>
         const mobileMenu = document.querySelector('#mobile-menu');
         const navbarMenu = document.querySelector('.navbar-menu');
 
         mobileMenu.addEventListener('click', () => {
             navbarMenu.classList.toggle('active');
         });
-    </script>
+    </script>-->
 </body>
-</html>
+

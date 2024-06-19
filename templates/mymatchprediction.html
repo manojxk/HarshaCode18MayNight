@@ -1,0 +1,165 @@
+<!--<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" rgb(15,22,50)>
+    <title>Cricket Match Prediction Form</title>-->
+{% extends 'base.html' %}
+{% block title %}Cricket Match Prediction Form{% endblock %}
+{% block styles %}
+<style>
+    .container {
+        max-width: 800px;
+        margin: 50px auto;
+        padding: 20px;
+        background-color: rgba(37, 91, 227);
+        border-radius: 40px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    h2 {
+        margin-bottom: 20px;
+        text-align: center;
+        color: rgba(10, 10, 10, 0.432);
+        text-shadow: 1px 1px 2px white, 0 0 25px rgb(68, 159, 211), 0 0 5px darkblue;
+    }
+
+    .form-group {
+        margin-bottom: 20px;
+    }
+
+    .form-group label {
+        font-weight: bold;
+        display: block;
+        margin-bottom: 0.5rem;
+        color: white;
+    }
+
+    .form-group textarea {
+            resize: vertical;
+        }
+
+    .form-group select,
+    .form-group input,
+    .form-group textarea {
+            width: 100%;
+            padding: 0.5rem;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+    input[type="text"],
+    input[type="email"],
+    textarea {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
+
+    textarea {
+        resize: vertical;
+    }
+
+    .submit-btn {
+        display: block;
+        width: 30%;
+        padding: 10px;
+        background-color: #15b35c;
+        color: #fff;
+        border: none;   
+        border-radius: 25px;
+        cursor: pointer;
+        font-size: 18px;
+        transition: background-color 0.3s ease;
+        opacity: 0.8;
+        margin-left: 265px;
+        font-weight: bold;
+    }
+
+    .submit-btn:hover {
+        background-color: #047028;
+    }
+
+    .players {
+        margin-bottom: 20px;
+    }
+
+    .players label {
+        font-weight: normal;
+        margin-right: 25px;
+    }
+
+    .players span {
+        font-weight: bold;
+    }
+</style>
+{% endblock %}
+
+<body>
+    {% block content %}
+    <div class="container">
+        <h1 style="color: white;">Cricket Match Prediction</h1>
+        <form action="/sForm/results" method="POST">
+            <div class="form-group">
+                <label for="team1">Team 1: </label>
+                <select id="team1" name="team1">
+                    <option value="">Select the Team 1</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="team2">Team 2: </label>
+                <select id="team2" name="team2">
+                    <option value="">Select the Team 2</option>
+                </select>
+            </div>
+            <div class="players" id="team1play"></div>
+            <div class="players" id="team2play"></div>
+
+            <div class="form-group">
+                <label for="pitch">Select the Pitch :</label>
+                <select id="pitch" name="Pitch">
+                    <option value="">Select the Type of Pitch</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="stadium">Name of the Stadium :</label>
+                <select id="stadium" name="Stadium">
+                    <option value="">Select the Stadium</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="wcond">Weather Condition of the Day :</label>
+                <select id="wcond" name="wcond">
+                    <option value="">Select the Weather Condition of the day</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="tosswin">Which team won the Toss :</label>
+                <select id=tosswin name=tosswin>
+                    <option value="">Select the Team</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="mwin">Which team won more times in that pitch :</label>
+                <select id=mwin name="mwin">
+                    <option value="">Select the Team</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="fans-rating">Fans Rating: </label>
+                <input type="number" id="fans-rating" name="fans-rating" placeholder="Enter fans rating (1-10)" min="1" max="10">
+            </div>
+            <div class="form-group">
+                <label for="prediction">Your Prediction: </label>
+                <textarea id="prediction" name="prediction" placeholder="Who do you think will win and what will be the target score?"></textarea>
+            </div>
+            <button type="submit" class="submit-btn" formaction="/sForm/results" method="POST">Predict</button>
+        </form>
+    </div>
+    {% endblock %}
+
+    {% block scripts %}
+    <script src="{{url_for('static', filename='js/form.js')}}"></script>
+    {% endblock %}
+</body>

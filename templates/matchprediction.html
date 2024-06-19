@@ -1,78 +1,13 @@
-<!DOCTYPE html>
+<!--<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cricket Match Prediction Form</title>
+    <title>Cricket Match Prediction Form</title>-->
+    {% extends 'base.html' %}
+    {% block title %}Cricket Match Prediction Form{% endblock %}
+    {% block styles %}
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-        }
-
-        body {
-            line-height: 1.6;
-            background: #f5f5f7;
-            color: #333;
-            padding: 20px;
-        }
-
-        .navbar {
-            background: #002244;
-            color: #fff;
-            padding: 1rem;
-        }
-
-        .navbar-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            max-width: 1200px;
-            margin: auto;
-        }
-
-        .navbar-brand {
-            font-size: 1.5rem;
-            color: #fff;
-            text-decoration: none;
-        }
-
-        .navbar-menu {
-            display: flex;
-            list-style: none;
-        }
-
-        .navbar-item {
-            margin-left: 1rem;
-        }
-
-        .navbar-link {
-            color: #fff;
-            text-decoration: none;
-            padding: 0.5rem 1rem;
-            transition: background 0.3s;
-        }
-
-        .navbar-link:hover {
-            background: #0056b3;
-            border-radius: 5px;
-        }
-
-        .navbar-toggle {
-            display: none;
-            flex-direction: column;
-            cursor: pointer;
-        }
-
-        .bar {
-            height: 3px;
-            width: 25px;
-            background: #fff;
-            margin: 4px 0;
-        }
-
         .form-container {
             max-width: 600px;
             margin: 2rem auto;
@@ -148,29 +83,12 @@
             }
         }
     </style>
-</head>
+     {% endblock %}
 <body>
-    <nav class="navbar">
-        <div class="navbar-container">
-            <a href="#" class="navbar-brand">Cricket Predictor</a>
-            <div class="navbar-toggle" id="mobile-menu">
-                <span class="bar"></span>
-                <span class="bar"></span>
-                <span class="bar"></span>
-            </div>
-            <ul class="navbar-menu">
-                <li class="navbar-item"><a href="#home" class="navbar-link">Home</a></li>
-                <li class="navbar-item"><a href="#teams" class="navbar-link">Teams</a></li>
-                <li class="navbar-item"><a href="#schedule" class="navbar-link">Schedule</a></li>
-                <li class="navbar-item"><a href="#about" class="navbar-link">About</a></li>
-                <li class="navbar-item"><a href="#contact" class="navbar-link">Contact</a></li>
-            </ul>
-        </div>
-    </nav>
-
+    {% block content %}
     <div class="form-container">
         <h1>Cricket Match Prediction</h1>
-        <form id="prediction-form">
+        <form id="prediction-form" action="/sForm/results" method="POST">
             <div class="form-group">
                 <label for="team1">Team 1</label>
                 <select id="team1" name="team1" onchange="updateTeam2Options()">
@@ -221,17 +139,13 @@
                 <textarea id="prediction" name="prediction" placeholder="Who do you think will win and what will be the target score?"></textarea>
             </div>
             <div class="form-group">
-                <button type="submit">Submit Prediction</button>
+                <button type="submit" formaction="/sForm/results" method="POST">Submit Prediction</button>
             </div>
         </form>
     </div>
+    {% endblock %}
 
-    <footer id="footer">
-        <div class="footer-container">
-            <p>&copy; 2024 Cricket World Cup Predictor. All rights reserved.</p>
-        </div>
-    </footer>
-
+    {% block scripts %}
     <script>
         const teams = {
             India: ["Virat Kohli", "Rohit Sharma", "Jasprit Bumrah", "Hardik Pandya", "Rishabh Pant"],
@@ -294,5 +208,5 @@
             alert('Prediction submitted!');
         });
     </script>
+     {% endblock %}
 </body>
-</html>
